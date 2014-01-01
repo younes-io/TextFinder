@@ -17,10 +17,15 @@ TextFinder::~TextFinder()
     delete ui;
 }
 
-void TextFinder::on_findButton_clicked()
+void TextFinder::searchTheWord()
 {
     QString searchString = ui->lineEdit->text();
     ui->textEdit->find(searchString, QTextDocument::FindWholeWords);
+}
+
+void TextFinder::on_findButton_clicked()
+{
+    this->searchTheWord();
 }
 
 void TextFinder::loadTextFile()
@@ -35,4 +40,9 @@ void TextFinder::loadTextFile()
     ui->textEdit->setPlainText(line);
     QTextCursor cursor = ui->textEdit->textCursor();
     cursor.movePosition(QTextCursor::Start, QTextCursor::MoveAnchor, 1);
+}
+
+void TextFinder::on_lineEdit_textEdited(const QString &arg1)
+{
+    this->searchTheWord();
 }
