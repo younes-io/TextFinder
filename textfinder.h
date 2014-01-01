@@ -2,6 +2,9 @@
 #define TEXTFINDER_H
 
 #include <QWidget>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
+#include <QtCore/QIODevice>
 
 namespace Ui {
 class TextFinder;
@@ -16,7 +19,6 @@ public:
     ~TextFinder();
 
 private slots:
-    void on_findButton_clicked();
     void on_lineEdit_textEdited(const QString &arg1);
 
 private:
