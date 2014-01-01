@@ -23,6 +23,7 @@ private:
     Ui::TextFinder *ui;
     void loadTextFile();
     void searchTheWord();
+    void moveCursorToStart();
 };
 
 #endif // TEXTFINDER_H
