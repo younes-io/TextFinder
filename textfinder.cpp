@@ -23,6 +23,12 @@ void TextFinder::searchTheWord()
     ui->textEdit->find(searchString, QTextDocument::FindWholeWords);
 }
 
+void TextFinder::moveCursorToStart()
+{
+    QTextCursor cursor = ui->textEdit->textCursor();
+    cursor.movePosition(QTextCursor::Start, QTextCursor::MoveAnchor, 1);
+}
+
 void TextFinder::on_findButton_clicked()
 {
     this->searchTheWord();
@@ -38,11 +44,11 @@ void TextFinder::loadTextFile()
     inputFile.close();
 
     ui->textEdit->setPlainText(line);
-    QTextCursor cursor = ui->textEdit->textCursor();
-    cursor.movePosition(QTextCursor::Start, QTextCursor::MoveAnchor, 1);
+    this->moveCursorToStart();
 }
 
 void TextFinder::on_lineEdit_textEdited(const QString &arg1)
 {
+    this->moveCursorToStart();
     this->searchTheWord();
 }
