@@ -1,3 +1,5 @@
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
 #include "textfinder.h"
 #include "ui_textfinder.h"
 
@@ -18,7 +20,7 @@ void TextFinder::on_findButton_clicked()
 
 }
 
-void loadTextFile()
+void TextFinder::loadTextFile()
 {
     QFile inputFile(":/input.txt");
     inputFile.open(QIODevice::ReadOnly);
