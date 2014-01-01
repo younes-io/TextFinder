@@ -25,7 +25,7 @@
   <property name="windowTitle">
    <string>Text Finder - Sherlock</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_2">
+  <layout class="QHBoxLayout" name="horizontalLayout_3">
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
