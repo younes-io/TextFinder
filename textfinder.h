@@ -17,10 +17,12 @@ public:
 
 private slots:
     void on_findButton_clicked();
+    void on_lineEdit_textEdited(const QString &arg1);
 
 private:
     Ui::TextFinder *ui;
     void loadTextFile();
+    void searchTheWord();
 };
 
 #endif // TEXTFINDER_H
