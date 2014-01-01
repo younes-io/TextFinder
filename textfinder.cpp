@@ -1,6 +1,3 @@
-#include <QtCore/QFile>
-#include <QtCore/QTextStream>
-#include <QtCore/QIODevice>
 #include "textfinder.h"
 #include "ui_textfinder.h"
 
@@ -17,21 +14,45 @@ TextFinder::~TextFinder()
     delete ui;
 }
 
+void TextFinder::on_lineEdit_textEdited(const QString &arg1)
+{
+    this->searchTheWord();
+}
+
+
 void TextFinder::searchTheWord()
 {
     QString searchString = ui->lineEdit->text();
-    ui->textEdit->find(searchString, QTextDocument::FindWholeWords);
+//    ui->textEdit->find(searchString, QTextDocument::FindWholeWords);
+
+    QList<QTextEdit::ExtraSelection> extraSelections;
+
+    ui->textEdit->moveCursor(QTextCursor::Start);
+    QColor color = QColor(Qt::gray).lighter(130);
+
+    int numberOccurrences = 0;
+    while(ui->textEdit->find(searchString))
+    {
+        numberOccurrences++;
+
+        QTextEdit::ExtraSelection extra;
+        extra.format.setBackground(color);
+
+        extra.cursor = ui->textEdit->textCursor();
+        extraSelections.append(extra);
+    }
+
+    ui->textEdit->setExtraSelections(extraSelections);
+    QString num = QString::number(numberOccurrences);
+
+    ui->numberOccurrencesLabel->setText(num);
 }
 
 void TextFinder::moveCursorToStart()
 {
     QTextCursor cursor = ui->textEdit->textCursor();
     cursor.movePosition(QTextCursor::Start, QTextCursor::MoveAnchor, 1);
-}
-
-void TextFinder::on_findButton_clicked()
-{
-    this->searchTheWord();
+    ui->textEdit->setTextCursor(cursor);
 }
 
 void TextFinder::loadTextFile()
@@ -45,10 +66,4 @@ void TextFinder::loadTextFile()
 
     ui->textEdit->setPlainText(line);
     this->moveCursorToStart();
-}
-
-void TextFinder::on_lineEdit_textEdited(const QString &arg1)
-{
-    this->moveCursorToStart();
-    this->searchTheWord();
 }
