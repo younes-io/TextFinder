@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>467</width>
-    <height>363</height>
+    <width>576</width>
+    <height>477</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -42,14 +42,25 @@
          <item>
           <widget class="QLineEdit" name="lineEdit"/>
          </item>
-         <item>
-          <widget class="QPushButton" name="findButton">
-           <property name="text">
-            <string>Find</string>
-           </property>
-          </widget>
-         </item>
         </layout>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <item>
+        <widget class="QLabel" name="numKeywordLabel">
+         <property name="text">
+          <string>Number of occurrences of the keyword :</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="numberOccurrencesLabel">
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
