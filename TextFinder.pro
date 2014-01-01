@@ -18,3 +18,6 @@ SOURCES += main.cpp\
 HEADERS  += textfinder.h
 
 FORMS    += textfinder.ui
+
+OTHER_FILES += \
+    input.txt

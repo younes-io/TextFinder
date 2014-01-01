@@ -1,5 +1,6 @@
 #include <QtCore/QFile>
 #include <QtCore/QTextStream>
+#include <QtCore/QIODevice>
 #include "textfinder.h"
 #include "ui_textfinder.h"
 
@@ -8,6 +9,7 @@ TextFinder::TextFinder(QWidget *parent) :
     ui(new Ui::TextFinder)
 {
     ui->setupUi(this);
+    loadTextFile();
 }
 
 TextFinder::~TextFinder()
@@ -17,12 +19,13 @@ TextFinder::~TextFinder()
 
 void TextFinder::on_findButton_clicked()
 {
-
+    QString searchString = ui->lineEdit->text();
+    ui->textEdit->find(searchString, QTextDocument::FindWholeWords);
 }
 
 void TextFinder::loadTextFile()
 {
-    QFile inputFile(":/input.txt");
+    QFile inputFile("input.txt");
     inputFile.open(QIODevice::ReadOnly);
 
     QTextStream in(&inputFile);
